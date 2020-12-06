@@ -1,0 +1,31 @@
+apiVersion: apps / v1
+kind: Deployment
+meta data:
+  name: eksworkshop-php
+  labels:
+    app: eksworkshop-php
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eksworkshop-php
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    meta data:
+      labels:
+        app: eksworkshop-php
+    spec:
+      containers:
+      - image: [image location]
+        imagePullPolicy: Always
+        name: eksworkshop-php
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      imagePullSecrets:
+      - name: ap-southeast-1-ecr-registry

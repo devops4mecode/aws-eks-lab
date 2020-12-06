@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+meta data:
+  name: eksworkshop-php
+spec:
+  selector:
+    app: eksworkshop-php
+  type: LoadBalancer
+  ports:
+   - protocol: TCP
+      port: 80
+      targetPort: 80
